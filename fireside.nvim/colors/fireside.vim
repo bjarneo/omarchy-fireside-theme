@@ -1,5 +1,5 @@
-" Frost colorscheme for Vim/Neovim
-" Maintainer: Frost Theme
+" Fireside colorscheme for Vim/Neovim
+" Maintainer: Fireside Theme
 " License: MIT
 
 set background=dark
@@ -9,148 +9,241 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "pina"
+let g:colors_name = "fireside"
 
-" Color definitions
+" Color definitions - mapped to alacritty colors
 let background = "#0a1220"
 let foreground = "#f0f2f5"
 let cursor     = "#f0f2f5"
 
-" Colors
-let color0  = "#0a1220"
-let color1  = "#e06b58"
-let color2  = "#889889"
-let color3  = "#b8b5a2"
-let color4  = "#b8b8b6"
-let color5  = "#e48b7a"
-let color6  = "#d0cac7"
-let color7  = "#f0f2f5"
-let color8  = "#555c65"
-let color9  = "#e06b58"
-let color10 = "#9eaca1"
-let color11 = "#c8c3b8"
-let color12 = "#cdcbc9"
-let color13 = "#f0a19a"
-let color14 = "#e3ddda"
-let color15 = "#f0f2f5"
+" ANSI Colors (alacritty compatible)
+let black      = "#0a1220"    " ansi 0 - background
+let red        = "#e06b58"    " ansi 1 - red (errors, functions)
+let green      = "#889889"    " ansi 2 - green (strings, added)
+let yellow     = "#b8b5a2"    " ansi 3 - yellow (types, warnings)
+let blue       = "#b8b8b6"    " ansi 4 - blue (keywords, info)
+let magenta    = "#e48b7a"    " ansi 5 - magenta (constants)
+let cyan       = "#d0cac7"    " ansi 6 - cyan (special)
+let white      = "#f0f2f5"    " ansi 7 - foreground
+let br_black   = "#555c65"    " ansi 8 - bright black (comments)
+let br_red     = "#e06b58"    " ansi 9 - bright red
+let br_green   = "#9eaca1"    " ansi 10 - bright green
+let br_yellow  = "#c8c3b8"    " ansi 11 - bright yellow
+let br_blue    = "#cdcbc9"    " ansi 12 - bright blue
+let br_magenta = "#f0a19a"    " ansi 13 - bright magenta
+let br_cyan    = "#e3ddda"    " ansi 14 - bright cyan
+let br_white   = "#f0f2f5"    " ansi 15 - bright white
 
 " Terminal colors
 if has('nvim')
-  let g:terminal_color_0 = color0
-  let g:terminal_color_1 = color1
-  let g:terminal_color_2 = color2
-  let g:terminal_color_3 = color3
-  let g:terminal_color_4 = color4
-  let g:terminal_color_5 = color5
-  let g:terminal_color_6 = color6
-  let g:terminal_color_7 = color7
-  let g:terminal_color_8 = color8
-  let g:terminal_color_9 = color9
-  let g:terminal_color_10 = color10
-  let g:terminal_color_11 = color11
-  let g:terminal_color_12 = color12
-  let g:terminal_color_13 = color13
-  let g:terminal_color_14 = color14
-  let g:terminal_color_15 = color15
+  let g:terminal_color_0 = black
+  let g:terminal_color_1 = red
+  let g:terminal_color_2 = green
+  let g:terminal_color_3 = yellow
+  let g:terminal_color_4 = blue
+  let g:terminal_color_5 = magenta
+  let g:terminal_color_6 = cyan
+  let g:terminal_color_7 = white
+  let g:terminal_color_8 = br_black
+  let g:terminal_color_9 = br_red
+  let g:terminal_color_10 = br_green
+  let g:terminal_color_11 = br_yellow
+  let g:terminal_color_12 = br_blue
+  let g:terminal_color_13 = br_magenta
+  let g:terminal_color_14 = br_cyan
+  let g:terminal_color_15 = br_white
 elseif has('terminal')
   let g:terminal_ansi_colors = [
-    \ color0, color1, color2, color3,
-    \ color4, color5, color6, color7,
-    \ color8, color9, color10, color11,
-    \ color12, color13, color14, color15
+    \ black, red, green, yellow,
+    \ blue, magenta, cyan, white,
+    \ br_black, br_red, br_green, br_yellow,
+    \ br_blue, br_magenta, br_cyan, br_white
   \ ]
 endif
 
 " Basic highlight groups
 exe "hi Normal guifg=" . foreground . " guibg=" . background . " ctermfg=7 ctermbg=0"
 exe "hi Cursor guifg=" . background . " guibg=" . cursor . " ctermfg=0 ctermbg=7"
-exe "hi CursorLine guibg=" . color8 . " ctermbg=8"
-exe "hi CursorColumn guibg=" . color8 . " ctermbg=8"
-exe "hi LineNr guifg=" . color8 . " ctermfg=8"
-exe "hi CursorLineNr guifg=" . color7 . " ctermfg=7"
+exe "hi CursorLine guibg=" . br_black . " ctermbg=8"
+exe "hi CursorColumn guibg=" . br_black . " ctermbg=8"
+exe "hi LineNr guifg=" . br_black . " ctermfg=8"
+exe "hi CursorLineNr guifg=" . white . " ctermfg=7"
 
-" Syntax highlighting
-exe "hi Comment guifg=" . color8 . " ctermfg=8"
-exe "hi String guifg=" . color2 . " ctermfg=2"
-exe "hi Number guifg=" . color4 . " ctermfg=4"
-exe "hi Constant guifg=" . color5 . " ctermfg=5"
-exe "hi Identifier guifg=" . color7 . " ctermfg=7"
-exe "hi Function guifg=" . color1 . " ctermfg=1"
-exe "hi Statement guifg=" . color1 . " ctermfg=1"
-exe "hi PreProc guifg=" . color5 . " ctermfg=5"
-exe "hi Type guifg=" . color3 . " ctermfg=3"
-exe "hi Special guifg=" . color5 . " ctermfg=5"
-exe "hi Keyword guifg=" . color1 . " ctermfg=1"
-exe "hi Operator guifg=" . color7 . " ctermfg=7"
+" Syntax highlighting - bat-style mapping
+exe "hi Comment guifg=" . br_black . " gui=italic ctermfg=8 cterm=italic"
+exe "hi String guifg=" . green . " ctermfg=2"
+exe "hi Character guifg=" . br_green . " ctermfg=10"
+exe "hi Number guifg=" . cyan . " ctermfg=6"
+exe "hi Float guifg=" . cyan . " ctermfg=6"
+exe "hi Boolean guifg=" . red . " ctermfg=1"
+exe "hi Constant guifg=" . magenta . " ctermfg=5"
+exe "hi Identifier guifg=" . white . " ctermfg=7"
+exe "hi Function guifg=" . red . " gui=bold ctermfg=1 cterm=bold"
+exe "hi Statement guifg=" . blue . " gui=bold ctermfg=4 cterm=bold"
+exe "hi Conditional guifg=" . blue . " ctermfg=4"
+exe "hi Repeat guifg=" . blue . " ctermfg=4"
+exe "hi Label guifg=" . blue . " ctermfg=4"
+exe "hi Operator guifg=" . white . " ctermfg=7"
+exe "hi Keyword guifg=" . blue . " gui=bold ctermfg=4 cterm=bold"
+exe "hi Exception guifg=" . red . " ctermfg=1"
+exe "hi PreProc guifg=" . br_magenta . " ctermfg=13"
+exe "hi Include guifg=" . br_magenta . " ctermfg=13"
+exe "hi Define guifg=" . br_magenta . " ctermfg=13"
+exe "hi Macro guifg=" . br_magenta . " ctermfg=13"
+exe "hi PreCondit guifg=" . br_magenta . " ctermfg=13"
+exe "hi Type guifg=" . yellow . " gui=bold ctermfg=3 cterm=bold"
+exe "hi StorageClass guifg=" . yellow . " ctermfg=3"
+exe "hi Structure guifg=" . yellow . " ctermfg=3"
+exe "hi Typedef guifg=" . yellow . " ctermfg=3"
+exe "hi Special guifg=" . cyan . " ctermfg=6"
+exe "hi SpecialChar guifg=" . br_cyan . " ctermfg=14"
+exe "hi Tag guifg=" . red . " ctermfg=1"
+exe "hi Delimiter guifg=" . white . " ctermfg=7"
+exe "hi SpecialComment guifg=" . br_yellow . " ctermfg=11"
+exe "hi Debug guifg=" . br_red . " ctermfg=9"
 
-" Additional syntax highlighting for classes and console
-exe "hi Class guifg=" . color3 . " ctermfg=3"
-exe "hi Console guifg=" . color3 . " ctermfg=3"
+" Additional syntax highlighting
+exe "hi Class guifg=" . yellow . " gui=bold ctermfg=3 cterm=bold"
+exe "hi Variable guifg=" . white . " ctermfg=7"
+exe "hi Property guifg=" . cyan . " ctermfg=6"
+exe "hi Method guifg=" . red . " ctermfg=1"
 
 " UI elements
-exe "hi Visual guibg=" . color8 . " ctermbg=8"
-exe "hi Search guifg=" . background . " guibg=" . color11 . " ctermfg=0 ctermbg=11"
-exe "hi IncSearch guifg=" . background . " guibg=" . color3 . " ctermfg=0 ctermbg=3"
-exe "hi StatusLine guifg=" . foreground . " guibg=" . color8 . " ctermfg=7 ctermbg=8"
-exe "hi StatusLineNC guifg=" . color8 . " guibg=" . background . " ctermfg=8 ctermbg=0"
-exe "hi VertSplit guifg=" . color8 . " ctermfg=8"
-exe "hi Pmenu guifg=" . foreground . " guibg=" . color8 . " ctermfg=7 ctermbg=8"
-exe "hi PmenuSel guifg=" . background . " guibg=" . color4 . " ctermfg=0 ctermbg=4"
-exe "hi TabLine guifg=" . color8 . " guibg=" . background . " ctermfg=8 ctermbg=0"
+exe "hi Visual guibg=" . br_black . " ctermbg=8"
+exe "hi Search guifg=" . background . " guibg=" . yellow . " gui=bold ctermfg=0 ctermbg=3 cterm=bold"
+exe "hi IncSearch guifg=" . background . " guibg=" . br_yellow . " gui=bold ctermfg=0 ctermbg=11 cterm=bold"
+exe "hi StatusLine guifg=" . white . " guibg=" . br_black . " gui=bold ctermfg=7 ctermbg=8 cterm=bold"
+exe "hi StatusLineNC guifg=" . br_black . " guibg=" . background . " ctermfg=8 ctermbg=0"
+exe "hi VertSplit guifg=" . br_black . " ctermfg=8"
+exe "hi Pmenu guifg=" . white . " guibg=" . br_black . " ctermfg=7 ctermbg=8"
+exe "hi PmenuSel guifg=" . background . " guibg=" . blue . " gui=bold ctermfg=0 ctermbg=4 cterm=bold"
+exe "hi PmenuSbar guibg=" . br_black . " ctermbg=8"
+exe "hi PmenuThumb guibg=" . white . " ctermbg=7"
+exe "hi TabLine guifg=" . br_black . " guibg=" . background . " ctermfg=8 ctermbg=0"
 exe "hi TabLineFill guibg=" . background . " ctermbg=0"
-exe "hi TabLineSel guifg=" . foreground . " guibg=" . color8 . " ctermfg=7 ctermbg=8"
+exe "hi TabLineSel guifg=" . white . " guibg=" . br_black . " gui=bold ctermfg=7 ctermbg=8 cterm=bold"
 
-" Diff highlighting
-exe "hi DiffAdd guifg=" . color2 . " guibg=" . background . " ctermfg=2 ctermbg=0"
-exe "hi DiffChange guifg=" . color3 . " guibg=" . background . " ctermfg=3 ctermbg=0"
-exe "hi DiffDelete guifg=" . color1 . " guibg=" . background . " ctermfg=1 ctermbg=0"
-exe "hi DiffText guifg=" . color11 . " guibg=" . background . " ctermfg=11 ctermbg=0"
+" Diff highlighting - bat-style
+exe "hi DiffAdd guifg=" . green . " guibg=" . background . " gui=bold ctermfg=2 ctermbg=0 cterm=bold"
+exe "hi DiffChange guifg=" . yellow . " guibg=" . background . " ctermfg=3 ctermbg=0"
+exe "hi DiffDelete guifg=" . red . " guibg=" . background . " gui=bold ctermfg=1 ctermbg=0 cterm=bold"
+exe "hi DiffText guifg=" . br_yellow . " guibg=" . background . " gui=bold ctermfg=11 ctermbg=0 cterm=bold"
+
+" Git gutter
+exe "hi GitGutterAdd guifg=" . green . " ctermfg=2"
+exe "hi GitGutterChange guifg=" . yellow . " ctermfg=3"
+exe "hi GitGutterDelete guifg=" . red . " ctermfg=1"
+exe "hi GitGutterChangeDelete guifg=" . magenta . " ctermfg=5"
 
 " Error and warning
-exe "hi Error guifg=" . color1 . " guibg=" . background . " ctermfg=1 ctermbg=0"
-exe "hi Warning guifg=" . color3 . " guibg=" . background . " ctermfg=3 ctermbg=0"
-exe "hi ErrorMsg guifg=" . color1 . " ctermfg=1"
-exe "hi WarningMsg guifg=" . color3 . " ctermfg=3"
+exe "hi Error guifg=" . br_red . " guibg=" . background . " gui=bold ctermfg=9 ctermbg=0 cterm=bold"
+exe "hi Warning guifg=" . br_yellow . " guibg=" . background . " gui=bold ctermfg=11 ctermbg=0 cterm=bold"
+exe "hi ErrorMsg guifg=" . br_red . " gui=bold ctermfg=9 cterm=bold"
+exe "hi WarningMsg guifg=" . br_yellow . " gui=bold ctermfg=11 cterm=bold"
+exe "hi Question guifg=" . green . " gui=bold ctermfg=2 cterm=bold"
+exe "hi MoreMsg guifg=" . green . " gui=bold ctermfg=2 cterm=bold"
 
 " Folding
-exe "hi Folded guifg=" . color8 . " guibg=" . background . " ctermfg=8 ctermbg=0"
-exe "hi FoldColumn guifg=" . color8 . " guibg=" . background . " ctermfg=8 ctermbg=0"
+exe "hi Folded guifg=" . br_black . " guibg=" . background . " gui=italic ctermfg=8 ctermbg=0 cterm=italic"
+exe "hi FoldColumn guifg=" . br_black . " guibg=" . background . " ctermfg=8 ctermbg=0"
+
+" Spelling
+exe "hi SpellBad guisp=" . red . " gui=undercurl ctermfg=1 cterm=underline"
+exe "hi SpellCap guisp=" . blue . " gui=undercurl ctermfg=4 cterm=underline"
+exe "hi SpellLocal guisp=" . cyan . " gui=undercurl ctermfg=6 cterm=underline"
+exe "hi SpellRare guisp=" . magenta . " gui=undercurl ctermfg=5 cterm=underline"
 
 " File explorer and tree colors
-exe "hi Directory guifg=" . color4 . " ctermfg=4"
-exe "hi NvimTreeFolderName guifg=" . color4 . " ctermfg=4"
-exe "hi NvimTreeFolderIcon guifg=" . color4 . " ctermfg=4"
-exe "hi NvimTreeOpenedFolderName guifg=" . color2 . " ctermfg=2"
-exe "hi NvimTreeFileName guifg=" . color7 . " ctermfg=7"
-exe "hi NvimTreeExecFile guifg=" . color2 . " ctermfg=2"
-exe "hi NvimTreeSpecialFile guifg=" . color5 . " ctermfg=5"
-exe "hi NvimTreeImageFile guifg=" . color5 . " ctermfg=5"
-exe "hi NvimTreeMarkdownFile guifg=" . color1 . " ctermfg=1"
-exe "hi NvimTreeIndentMarker guifg=" . color8 . " ctermfg=8"
+exe "hi Directory guifg=" . blue . " gui=bold ctermfg=4 cterm=bold"
+exe "hi NvimTreeFolderName guifg=" . blue . " ctermfg=4"
+exe "hi NvimTreeFolderIcon guifg=" . blue . " ctermfg=4"
+exe "hi NvimTreeOpenedFolderName guifg=" . br_blue . " gui=bold ctermfg=12 cterm=bold"
+exe "hi NvimTreeFileName guifg=" . white . " ctermfg=7"
+exe "hi NvimTreeExecFile guifg=" . green . " gui=bold ctermfg=2 cterm=bold"
+exe "hi NvimTreeSpecialFile guifg=" . magenta . " gui=bold ctermfg=5 cterm=bold"
+exe "hi NvimTreeImageFile guifg=" . cyan . " ctermfg=6"
+exe "hi NvimTreeMarkdownFile guifg=" . red . " ctermfg=1"
+exe "hi NvimTreeIndentMarker guifg=" . br_black . " ctermfg=8"
 
 " Neo-tree colors
-exe "hi NeoTreeDirectoryName guifg=" . color4 . " ctermfg=4"
-exe "hi NeoTreeDirectoryIcon guifg=" . color4 . " ctermfg=4"
-exe "hi NeoTreeFileName guifg=" . color7 . " ctermfg=7"
-exe "hi NeoTreeFileIcon guifg=" . color5 . " ctermfg=5"
-exe "hi NeoTreeModified guifg=" . color3 . " ctermfg=3"
-exe "hi NeoTreeGitAdded guifg=" . color2 . " ctermfg=2"
-exe "hi NeoTreeGitDeleted guifg=" . color1 . " ctermfg=1"
-exe "hi NeoTreeGitModified guifg=" . color3 . " ctermfg=3"
-exe "hi NeoTreeGitUntracked guifg=" . color8 . " ctermfg=8"
+exe "hi NeoTreeDirectoryName guifg=" . blue . " ctermfg=4"
+exe "hi NeoTreeDirectoryIcon guifg=" . blue . " ctermfg=4"
+exe "hi NeoTreeFileName guifg=" . white . " ctermfg=7"
+exe "hi NeoTreeFileIcon guifg=" . cyan . " ctermfg=6"
+exe "hi NeoTreeModified guifg=" . yellow . " ctermfg=3"
+exe "hi NeoTreeGitAdded guifg=" . green . " ctermfg=2"
+exe "hi NeoTreeGitDeleted guifg=" . red . " ctermfg=1"
+exe "hi NeoTreeGitModified guifg=" . yellow . " ctermfg=3"
+exe "hi NeoTreeGitUntracked guifg=" . br_black . " ctermfg=8"
 
 " Telescope colors
-exe "hi TelescopeSelection guifg=" . color7 . " guibg=" . color8 . " ctermfg=7 ctermbg=8"
-exe "hi TelescopeSelectionCaret guifg=" . color1 . " ctermfg=1"
-exe "hi TelescopeMultiSelection guifg=" . color2 . " ctermfg=2"
-exe "hi TelescopeNormal guifg=" . color7 . " ctermfg=7"
-exe "hi TelescopeBorder guifg=" . color8 . " ctermfg=8"
-exe "hi TelescopePromptBorder guifg=" . color4 . " ctermfg=4"
-exe "hi TelescopeResultsBorder guifg=" . color8 . " ctermfg=8"
-exe "hi TelescopePreviewBorder guifg=" . color8 . " ctermfg=8"
+exe "hi TelescopeSelection guifg=" . white . " guibg=" . br_black . " gui=bold ctermfg=7 ctermbg=8 cterm=bold"
+exe "hi TelescopeSelectionCaret guifg=" . red . " gui=bold ctermfg=1 cterm=bold"
+exe "hi TelescopeMultiSelection guifg=" . green . " gui=bold ctermfg=2 cterm=bold"
+exe "hi TelescopeNormal guifg=" . white . " ctermfg=7"
+exe "hi TelescopeBorder guifg=" . br_black . " ctermfg=8"
+exe "hi TelescopePromptBorder guifg=" . blue . " ctermfg=4"
+exe "hi TelescopeResultsBorder guifg=" . br_black . " ctermfg=8"
+exe "hi TelescopePreviewBorder guifg=" . br_black . " ctermfg=8"
+exe "hi TelescopeTitle guifg=" . white . " gui=bold ctermfg=7 cterm=bold"
+exe "hi TelescopePromptTitle guifg=" . blue . " gui=bold ctermfg=4 cterm=bold"
+exe "hi TelescopeResultsTitle guifg=" . green . " gui=bold ctermfg=2 cterm=bold"
+exe "hi TelescopePreviewTitle guifg=" . cyan . " gui=bold ctermfg=6 cterm=bold"
 
 " LSP and diagnostic colors
-exe "hi DiagnosticError guifg=" . color1 . " ctermfg=1"
-exe "hi DiagnosticWarn guifg=" . color3 . " ctermfg=3"
-exe "hi DiagnosticInfo guifg=" . color4 . " ctermfg=4"
-exe "hi DiagnosticHint guifg=" . color8 . " ctermfg=8"
+exe "hi DiagnosticError guifg=" . red . " ctermfg=1"
+exe "hi DiagnosticWarn guifg=" . yellow . " ctermfg=3"
+exe "hi DiagnosticInfo guifg=" . blue . " ctermfg=4"
+exe "hi DiagnosticHint guifg=" . br_black . " ctermfg=8"
+exe "hi DiagnosticUnderlineError gui=undercurl guisp=" . red . " cterm=underline"
+exe "hi DiagnosticUnderlineWarn gui=undercurl guisp=" . yellow . " cterm=underline"
+exe "hi DiagnosticUnderlineInfo gui=undercurl guisp=" . blue . " cterm=underline"
+exe "hi DiagnosticUnderlineHint gui=undercurl guisp=" . br_black . " cterm=underline"
+
+" LSP semantic highlighting
+exe "hi @variable guifg=" . white . " ctermfg=7"
+exe "hi @variable.builtin guifg=" . magenta . " gui=italic ctermfg=5 cterm=italic"
+exe "hi @variable.parameter guifg=" . white . " gui=italic ctermfg=7 cterm=italic"
+exe "hi @constant guifg=" . magenta . " gui=bold ctermfg=5 cterm=bold"
+exe "hi @constant.builtin guifg=" . magenta . " gui=bold,italic ctermfg=5 cterm=bold,italic"
+exe "hi @constant.macro guifg=" . br_magenta . " gui=bold ctermfg=13 cterm=bold"
+exe "hi @string guifg=" . green . " ctermfg=2"
+exe "hi @string.escape guifg=" . br_green . " gui=bold ctermfg=10 cterm=bold"
+exe "hi @string.special guifg=" . cyan . " ctermfg=6"
+exe "hi @character guifg=" . br_green . " ctermfg=10"
+exe "hi @number guifg=" . cyan . " ctermfg=6"
+exe "hi @boolean guifg=" . red . " gui=bold ctermfg=1 cterm=bold"
+exe "hi @float guifg=" . cyan . " ctermfg=6"
+exe "hi @function guifg=" . red . " gui=bold ctermfg=1 cterm=bold"
+exe "hi @function.builtin guifg=" . red . " gui=bold,italic ctermfg=1 cterm=bold,italic"
+exe "hi @function.macro guifg=" . br_red . " gui=bold ctermfg=9 cterm=bold"
+exe "hi @method guifg=" . red . " ctermfg=1"
+exe "hi @constructor guifg=" . yellow . " gui=bold ctermfg=3 cterm=bold"
+exe "hi @parameter guifg=" . white . " gui=italic ctermfg=7 cterm=italic"
+exe "hi @keyword guifg=" . blue . " gui=bold ctermfg=4 cterm=bold"
+exe "hi @keyword.function guifg=" . blue . " gui=italic ctermfg=4 cterm=italic"
+exe "hi @keyword.operator guifg=" . blue . " ctermfg=4"
+exe "hi @keyword.return guifg=" . blue . " gui=bold ctermfg=4 cterm=bold"
+exe "hi @conditional guifg=" . blue . " ctermfg=4"
+exe "hi @repeat guifg=" . blue . " ctermfg=4"
+exe "hi @label guifg=" . blue . " ctermfg=4"
+exe "hi @operator guifg=" . white . " ctermfg=7"
+exe "hi @exception guifg=" . red . " gui=bold ctermfg=1 cterm=bold"
+exe "hi @type guifg=" . yellow . " gui=bold ctermfg=3 cterm=bold"
+exe "hi @type.builtin guifg=" . yellow . " gui=bold,italic ctermfg=3 cterm=bold,italic"
+exe "hi @type.definition guifg=" . yellow . " ctermfg=3"
+exe "hi @storageclass guifg=" . yellow . " ctermfg=3"
+exe "hi @structure guifg=" . yellow . " ctermfg=3"
+exe "hi @namespace guifg=" . yellow . " gui=italic ctermfg=3 cterm=italic"
+exe "hi @include guifg=" . br_magenta . " gui=bold ctermfg=13 cterm=bold"
+exe "hi @preproc guifg=" . br_magenta . " ctermfg=13"
+exe "hi @debug guifg=" . br_red . " ctermfg=9"
+exe "hi @tag guifg=" . red . " ctermfg=1"
+exe "hi @tag.attribute guifg=" . cyan . " ctermfg=6"
+exe "hi @tag.delimiter guifg=" . white . " ctermfg=7"
+exe "hi @comment guifg=" . br_black . " gui=italic ctermfg=8 cterm=italic"
+exe "hi @comment.documentation guifg=" . br_yellow . " gui=italic ctermfg=11 cterm=italic"
+
+" Treesitter context
+exe "hi TreesitterContext guibg=" . br_black . " ctermbg=8"
+exe "hi TreesitterContextLineNumber guifg=" . white . " gui=bold ctermfg=7 cterm=bold"
